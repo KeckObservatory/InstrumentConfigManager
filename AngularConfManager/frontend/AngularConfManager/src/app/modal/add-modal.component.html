@@ -7,34 +7,35 @@
 </div>
 <div class="modal-body">
     <form id="dataEntryForm">
-        <!-- <div *ngIf="!showAdd"> -->
-        <div>
-            <div class="form-group" *ngFor="let item of text_values">
-                <label for="txt{{item.name}}" class="control-label">{{item.title}}:</label>
-                <input type="text" class="form-control" [(ngModel)]="_current.info[item.name]" id="txt{{item.name}}" [ngModelOptions]="{standalone:true}" />
-            </div>
-            <div class="form-group" *ngFor="let item of selectValues">
-                <label for="txt{{item.name}}" class="control-label">{{item.title}}:</label>
-                <select class="form-control" [(ngModel)]="_current.info[item.name]" id="txt{{item.name}}" [ngModelOptions]="{standalone:true}" >
-                    <option *ngIf="item.default" selected>{{item.default}}</option>
-                    <option *ngFor="let opt of item.options">{{opt}}</option>
-                </select>
+        <div class="form-group" *ngFor="let prop of order">
+            <div [ngSwitch]="prop[0]" class="form-group">
+                <ng-container *ngSwitchCase="'textEntry'">
+                    <label class="control-label"
+                        for="txt{{prop[1]}}">
+                        {{_current.data.textEntryData[prop[1]].title}}:</label>
+                    <input type="text" class="form-control"
+                        [(ngModel)]="_current.info[prop[1]]"
+                        id="txt{{prop[1]}}"
+                        [ngModelOptions]="{standalone:true}"
+                        name="{{_current.data.textEntryData[prop[1]].title}}"
+                        [value]="_current.data.textEntryData[prop[1]].default"/>
+                </ng-container>
+                <ng-container *ngSwitchCase="'selectable'">
+                    <label class="control-label"
+                        for="txt{{prop[1]}}">
+                        {{_current.data.selectableData[prop[1]].title}}:</label>
+                    <select class="form-control"
+                            [(ngModel)]="_current.info[prop[1]]"
+                            id="txt{{prop[1]}}"
+                            [ngModelOptions]="{standalone:true}" >
+                        <option *ngIf="_current.data.selectableData[prop[1]].default" selected>
+                            {{_current.data.selectableData[prop[1]].default}}</option>
+                        <option *ngFor="let opt of _current.data.selectableData[prop[1]].options">
+                            {{opt}}</option>
+                    </select>
+                </ng-container>
             </div>
         </div>
-
-        <!-- <div *ngIf="showAdd">
-            <div class="form-group" *ngFor="let item of text_values">
-                <label for="txt{{item.title}}" class="control-label">{{item.title}}:</label>
-                <input type="text" class="form-control" [(ngModel)]="_current.info[item.title]" id="txt{{item.title}}" name="{{item.title}}" [value]="item.default" />
-            </div>
-            <div class="form-group" *ngFor="let item of selectValues">
-                <label for="txt{{item.title}}" class="control-label">{{item.title}}:</label>
-                <select class="form-control" [(ngModel)]="_current.info[item.title]" id="txt{{item.title}}" name="{{item.title}}">
-                    <option *ngFor="let opt of item.options">{{opt}}</option>
-                </select>
-            </div>
-        </div> -->
-
     </form>
 </div>
 <div class="modal-footer">

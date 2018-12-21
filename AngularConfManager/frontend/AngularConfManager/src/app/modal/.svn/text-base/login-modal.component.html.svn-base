@@ -1,0 +1,6 @@
+<!-- popup for incorrect login cookie -->
+<div class="modal-content">
+    <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title" id="loginModalLabel">You are not logged in! Please <a href="https://www2.keck.hawaii.edu/inst/PILogin/login.php">log in or create an account here</a>.</h4>
+    </div>
+</div>

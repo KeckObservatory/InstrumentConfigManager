@@ -60,22 +60,22 @@ export class NavComponent implements OnInit {
         var month: number = Number(mo);
         var day: number = Number(dy);
 
-        // Check which semester it currently is
-        if (month < 2 || month > 8) sem = "B";
+	// Check which semester it currently is
+	if (month < 2 || month > 8) sem = "B";
 
-        // Check if the new schedule has been published
-        if ((month > 5 && month < 8) || (month == 12 || month < 2)) isNextSemOut = true;
-        if (isNextSemOut && sem == 'B') nextSem = (year+1).toString() + 'A';
-        else if (isNextSemOut) nextSem = yr + 'B';
+	// Check if the new schedule has been published
+	if ((month > 5 && month < 8) || (month == 12 || month < 2)) isNextSemOut = true;
+	if (isNextSemOut && sem == 'B') nextSem = (year+1).toString() + 'A';
+	else if (isNextSemOut) nextSem = yr + 'B';
 
-        // Create the current semester
-        sem = yr + sem;
+	// Create the current semester
+	sem = yr + sem;
 
-        let semester: Array<string> = [sem];
-        if (isNextSemOut) semester.push(nextSem);
-
-        // Return the array of current semesters
-        return semester;
+	let semester: Array<string> = [sem];
+	if (isNextSemOut) semester.push(nextSem);
+        
+	// Return the array of current semesters
+	return semester;
     }
 
     async ngOnInit() {
@@ -114,7 +114,7 @@ export class NavComponent implements OnInit {
           .subscribe(async params => {
 
             if (params){
-                //console.log("params", params);
+                console.log("params", params);
                 if (params.program) {
                     this.url_program = params.program;
                     this.current.progname = this.url_program;
@@ -177,27 +177,40 @@ export class NavComponent implements OnInit {
     }
 
     getCookieList() {
+        // thanks https://gist.github.com/fentas/10289901 for this ridiculous bit of regex
+
+        //let c = [];
+        //document.cookie.replace(
+        //    /([^=;]+)=([^;]*)/gi,
+        //    function(m,key:string,value:string): string {
+        //            c[key.replace(/(^\s+|\s+$)/g,'')] =
+        //                value.replace(/(^\s+|\s+$)/g,'');
+        //            return;
+        //        }
+        //);
+
+        //return c;
+
         let c = document.cookie;
         console.log(c);
-        var c_arr = c.split(';');
-        console.log(c_arr);
-        var keckid = 0;
-        for (var i=0; i<c_arr.length; i++){
-            console.log(c_arr[i]);
-            var els = c_arr[i].split('=');
-            console.log(els);
-            if (els[0] == 'keckID')
-                keckid = parseFloat(els[1]);
-        }
-        return keckid;
+	var c_arr = c.split(';');
+	console.log(c_arr);
+	var keckid = 0;
+	for (var i=0; i<c_arr.length; i++){
+		console.log(c_arr[i]);
+		var els = c_arr[i].split('=');
+		console.log(els);
+		if (els[0] == 'keckID')
+			keckid = parseFloat(els[1]);
+	}
+	return keckid;
     }
 
     async showList() {
-        if (this.current.name !== "Instrument" && this.current.progname
-                !== "Program" && this.current.semester !== "Semester"){
+        if (this.current.name !== "Instrument" && this.current.progname !== "Program" && this.current.semester !== "Semester"){
             this.current.data = this.data[this.current.name]["data"];
 
-            console.log("updating current: ", this.current, "\ndata: ", this.data);
+            console.log("updating", this.current, this.data);
             let response = await this.http.showList(this.current);
             this.setDataToResult(response);
         }
@@ -216,11 +229,11 @@ export class NavComponent implements OnInit {
         let prog: string = this.current["progname"];
         let sem: string = this.current["semester"];
 
-    //if (inst=="HIRESr") inst = "HIRES";
-    //else if (inst=="LRIS-ADC") inst = "LRIS";
+	//if (inst=="HIRESr") inst = "HIRES";
+	//else if (inst=="LRIS-ADC") inst = "LRIS";
         this.current=this.data[inst];
 
-    //console.log(this.current);
+	//console.log(this.current);
 
         if (prog !== "Program") {
             this.current["progname"] = prog;

@@ -150,6 +150,7 @@ export class ModalComponent implements OnInit {
                 }
             }
         })
+
     }
 
     openAddModal() {

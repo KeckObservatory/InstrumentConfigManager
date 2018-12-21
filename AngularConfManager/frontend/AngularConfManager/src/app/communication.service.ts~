@@ -91,7 +91,7 @@ export class CommunicationService {
 
         var data = '';
         for (let item in current.info){
-            //console.log(item, ': ', current.info[item]);
+            console.log(item, ': ', current.info[item]);
             data = data + "&" + item + "=" + current.info[item];
         }
         //console.log(data);

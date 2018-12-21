@@ -7,12 +7,12 @@
         "data": {
             "selectableData": {
                 "filterb": {
-                    "title": "Blue Filter",
+                    "title": "Filter",
                     "options": ["KBlue", "None"],
                     "default": ""
                 },
                 "gratingb": {
-                    "title": "Blue Grating",
+                    "title": "Grating",
                     "options": ["BL", "BM", "BH1", "BH2", "BH3", "None"],
                     "default": ""
                 },
@@ -33,11 +33,11 @@
                     "default": ""
                 },
                 "cwaveb": {
-                    "title": "CWaveB",
+                    "title": "CWave",
                     "default": ""
                 },
                 "pwaveb": {
-                    "title": "PWaveB",
+                    "title": "PWave",
                     "default": ""
                 },
                 "camangleb": {
@@ -53,11 +53,11 @@
                     "default": "0"
                 },
                 "ampmodeb": {
-                    "title": "Amp Mode",
+                    "title": "Amplifier Mode",
                     "default": "9"
                 },
                 "gainmulb": {
-                    "title": "Gain Mult",
+                    "title": "Gain Multiplier",
                     "default": "10"
                 },
                 "binningb": {
@@ -73,21 +73,7 @@
                     "default": "Sky"
                 }
             }
-        },
-        "order": [
-            ["textEntry","statenam"],
-            ["selectable","image_slicer"],
-            ["selectable","filterb"],
-            ["selectable","gratingb"],
-            ["textEntry","cwaveb"],
-            ["textEntry","pwaveb"],
-            ["textEntry","binningb"],
-            ["textEntry","gainmulb"],
-            ["textEntry","ccdmodeb"],
-            ["textEntry","ampmodeb"],
-            ["textEntry","cal_mirror"],
-            ["textEntry","polarizer"]
-        ]
+        }
     },
 
 
@@ -181,21 +167,7 @@
                     "default": ""
                 }
             }
-        },
-        "order":[
-            ["textEntry","statenam"],
-            ["selectable","hatch"],
-            ["selectable","deckname"],
-            ["textEntry","slitwid"],
-            ["selectable","fil1name"],
-            ["selectable","fil2name"],
-            ["selectable","coll"],
-            ["selectable","cofname"],
-            ["textEntry","echangl"],
-            ["textEntry","xdangl"],
-            ["selectable","lampname"],
-            ["selectable","lfilname"]
-        ]
+        }
     },
 
 
@@ -214,9 +186,9 @@
                 "bluegrism": {
                     "title": "Blue Grism",
                     "options": ["300/5000", "400/3400", "600/4000", "1200/3400"],
-                    "default": ""
+                    "default": "400/3400"
                 },
-                "bluefilter": {
+                "bfilter": {
                     "title": "Blue Filter",
                     "options": [
                         "u'_Blue",
@@ -233,9 +205,9 @@
                         "600/10000_gold_coated", "831/8200_gold_coated", "900/5500",
                         "1200/7500", "1200/9000_gold_coated", "Mirror"
                     ],
-                    "default": ""
+                    "default": "400/8500"
                 },
-                "redfilter": {
+                "rfilter": {
                     "title": "Red Filter",
                     "options": [
                         "B5_Red",
@@ -265,7 +237,7 @@
                         "long_8.7",
                         "focus_holes"
                     ],
-                    "default": ""
+                    "default": "long_1.0"
                 }
             },
             "textEntryData": {
@@ -274,20 +246,20 @@
                     "default": ""
                 },
                 "redcentralwave":{
-                    "title": "Red Central Wavelength",
+                    "title": "Red Grating Central Wavelength",
                     "default": ""
                 }
             }
         },
         "order": [
-            ["textEntry","statenam"],
-            ["selectable","slitmask"],
-            ["selectable","dichroic"],
-            ["selectable","bluegrism"],
-            ["selectable","bluefilter"],
-            ["selectable","redgrating"],
-            ["textEntry","redcentralwave"],
-            ["selectable","redfilter"]
+            "statenam",
+            "slitmask",
+            "dichroic",
+            "bluegrism",
+            "bfilter",
+            "redgrating",
+            "redcentralwave",
+            "rfilter"
         ]
     },
 
@@ -307,7 +279,7 @@
                 "bluegrism": {
                     "title": "Blue Grism",
                     "options": ["300/5000", "400/3400", "600/4000", "1200/3400"],
-                    "default": ""
+                    "default": "400/3400"
                 },
                 "bluefilter": {
                     "title": "Blue Filter",
@@ -326,7 +298,7 @@
                         "600/10000_gold_coated", "831/8200_gold_coated", "900/5500",
                         "1200/7500", "1200/9000_gold_coated", "Mirror"
                     ],
-                    "default": ""
+                    "default": "400/8500"
                 },
                 "redfilter": {
                     "title": "Red Filter",
@@ -356,7 +328,7 @@
                         "pol_1.5",
                         "direct"
                     ],
-                    "default": ""
+                    "default": "pol_1.0"
                 }
             },
             "textEntryData": {
@@ -365,20 +337,20 @@
                     "default": ""
                 },
                 "redcentralwave":{
-                    "title": "Red Central Wavelength",
+                    "title": "Red Grating Central Wavelength",
                     "default": ""
                 }
             }
         },
         "order": [
-            ["textEntry","statenam"],
-            ["selectable","slitmask"],
-            ["selectable","dichroic"],
-            ["selectable","bluegrism"],
-            ["selectable","bluefilter"],
-            ["selectable","redgrating"],
-            ["textEntry","redcentralwave"],
-            ["selectable","redfilter"]
+            "statenam",
+            "slitmask",
+            "dichroic",
+            "bluegrism",
+            "bfilter",
+            "redgrating",
+            "redcentralwave",
+            "rfilter"
         ]
     },
 
@@ -459,12 +431,11 @@
             }
         },
         "order":[
-            ["textEntry","statenam"],
-            ["selectable","obsmode"],
-            ["textEntry","mdcname"],
-            ["textEntry","coadds"],
-            ["selectable","sampmode_text"],
-            ["selectable","dither"]
+            "statenam",
+            "mdcname",
+            "coadds",
+            "sampmode",
+            "dither"
         ]
     }
 }

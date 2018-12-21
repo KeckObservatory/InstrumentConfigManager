@@ -53,11 +53,11 @@
                     "default": "0"
                 },
                 "ampmodeb": {
-                    "title": "Amp Mode",
+                    "title": "Amplifier Mode",
                     "default": "9"
                 },
                 "gainmulb": {
-                    "title": "Gain Mult",
+                    "title": "Gain Multiplier",
                     "default": "10"
                 },
                 "binningb": {

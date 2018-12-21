@@ -33,7 +33,7 @@ export class TableComponent implements OnInit {
         // });
 
         this.subscription = this.sharedCurrent.currentMessage.subscribe((val) => {
-            //console.log("table got current-val from subscription", val);
+            console.log("table got current-val from subscription", val);
             if (val) {
                 this.current = val;
                 [this.table_headings, this.configs, this.configIDs] = this.tableInit(val);
@@ -42,7 +42,7 @@ export class TableComponent implements OnInit {
     }
 
     tableInit(current) {
-        //console.log(current, "from tableInit");
+        console.log(current, "from tableInit");
         let headers = [];
         if (current.configurations){
             for (let property of current.order){
@@ -69,7 +69,59 @@ export class TableComponent implements OnInit {
                 goodConfigurations.push(configuration);
             });
 
-            //console.log("table init'd, ", headers, goodConfigurations);
+            /*
+            headers.push(current.data.textEntryData["statenam"].title);
+
+            for (let v in current.configurations[0]) {
+                if (current.data.selectableData.hasOwnProperty(v)) {
+                    // console.log('selectable: ',.current.data.selectableData[v])
+                    headers.push(current.data.selectableData[v].title);
+                }
+                else if (current.data.textEntryData.hasOwnProperty(v) && v != "statenam" ) {
+                    // console.log('text entry: ', .current.data.textEntryData[v])
+                    headers.push(current.data.textEntryData[v].title);
+                }
+                else {
+                    if (v != "id" && v != "progname" && v != "statenam" && v != "semester") {
+                        headers.push(v);
+                    }
+                }
+            }
+
+            let goodConfigurations = [];
+            let configIDs = [];
+
+            current.configurations.forEach(v => {
+                let lessEvilResponse = []
+                // Step 1. Get all the object keys.
+                // let evilResponseProps = Object.values(v);
+                // console.log(evilResponseProps);
+                // Step 2. Create an empty array.
+                // Step 3. Iterate throw all keys.
+                // console.log("v:",v)
+                lessEvilResponse.push(v["statenam"].toString());
+
+
+                for (let key in v) {
+                    // skip loop if the property is from prototype
+                    if (!v.hasOwnProperty(key)) continue;
+
+                    var obj = v[key];
+                    // console.log("key:",key," obj:",obj)
+
+                    if (key == "id") {
+                        configIDs.push(obj);
+                    }
+                    else if (key != "progname" && key != "statenam" && key != "semester"){
+                        lessEvilResponse.push(obj.toString());
+                    }
+                }
+
+                goodConfigurations.push(lessEvilResponse);
+            });
+            */
+
+            console.log("table init'd, ", headers, goodConfigurations);
 
             return [headers, goodConfigurations, configIDs];
         }

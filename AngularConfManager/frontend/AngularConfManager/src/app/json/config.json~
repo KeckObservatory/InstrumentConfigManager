@@ -1,5 +1,5 @@
 {
-    "oopgui":"../oopgui/oopgui.html",
+    "oopgui":"https://www.keck.hawaii.edu/inst/PILogin/ObservingTools/oopgui/oopgui.html",
     "toort":"https://www2.keck.hawaii.edu/inst/PILogin/too/",
     "apiURL":"api.php?service=ConfigManager&path="
 }
