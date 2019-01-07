@@ -113,9 +113,25 @@ export class TableComponent implements OnInit {
         }
     }
     async saveConfiguration(id) {
-      // console.log("save", id)
         this.current.info.id = id;
-        await this.http.saveConfiguration(this.current);
+        let resp = await this.http.saveConfiguration(this.current)
+        .then(x => {
+        var newBlob = new Blob([x.data], { type: "application/octet-stream" });
+            console.log('new blob:', newBlob);
+
+            const data = window.URL.createObjectURL(newBlob);
+            var link = document.createElement('a');
+            link.href = data;
+            link.download = x.fname;
+            link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));
+
+            setTimeout(function () {
+                window.URL.revokeObjectURL(data);
+                link.remove();
+            }, 100);
+            }).catch((err) =>{
+                console.log(err);
+            });
     }
 
 }

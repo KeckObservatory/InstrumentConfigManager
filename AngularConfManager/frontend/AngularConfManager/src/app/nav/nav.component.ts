@@ -61,7 +61,12 @@ export class NavComponent implements OnInit {
         var day: number = Number(dy);
 
         // Check which semester it currently is
-        if (month < 2 || month > 8) sem = "B";
+        if (month < 2 || (month == 2 && day == 1)){ 
+            sem = "B";
+            year = year - 1;
+        }
+        else if (month > 8) sem = "B";
+        else if (month == 8 && day > 1) sem = "B";
 
         // Check if the new schedule has been published
         if ((month > 5 && month < 8) || (month == 12 || month < 2)) isNextSemOut = true;
@@ -69,7 +74,7 @@ export class NavComponent implements OnInit {
         else if (isNextSemOut) nextSem = yr + 'B';
 
         // Create the current semester
-        sem = yr + sem;
+        sem = year.toString() + sem;
 
         let semester: Array<string> = [sem];
         if (isNextSemOut) semester.push(nextSem);

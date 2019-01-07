@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ResponseContentType } from '@angular/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -182,16 +183,62 @@ export class CommunicationService {
         }
     }
 
-    // save a .STATE file to the server
+    // save a .STATE file to the local directory
     async saveConfiguration(current): Promise<any>{
+
+        //let response = await this.httpClient.post(
+        //    this.apiURL+'saveConfiguration'
+        //            +'&instrument='+current.name
+        //            +'&id='+current.info.id,
+        //    {}).toPromise();
+        //return (response["statusText"]==="OK");
+
+        //return this.httpClient.post(
+        //    this.apiURL+'saveConfiguration'
+        //            +'&instrument='+current.name
+        //            +'&id='+current.info.id, {
+        //        responseType: ResponseContentType.Blob
+        //    }).pipe(map(res => {
+        //         return {
+        //             filename: res.filename,
+        //             data: res.blob()
+        //         };
+        //     }))
+        //     .subscribe(res => {
+        //         console.log('start download:', res);
+        //         var url = window.URL.createObjectURL(res.data);
+        //         var a = document.createElement('a');
+        //         document.body.appendChild(a);
+        //         a.setAttribute('style', 'display: none');
+        //         a.href = url;
+        //         a.download = 'test.state';
+        //         a.click();
+        //         window.URL.revokeObjectURL(url);
+        //         a.remove();
+        //     }, error => {
+        //         console.log('download error:', JSON.stringify(error));
+        //     }, () => {
+        //         console.log('Completed File Download.')
+        // });
 
         let response = await this.httpClient.post(
             this.apiURL+'saveConfiguration'
-                +'&instrument='+current.name
-                +'&id='+current.info.id,
-            {}).toPromise();
+                    +'&instrument='+current.name
+                    +'&id='+current.info.id, {}).toPromise();
+        console.log('response: ', response);
+        return response;
 
-        return (response["statusText"]==="OK");
+        /* console.log('start download:', response);
+        var url = window.URL.createObjectURL(response);
+        var a = document.createElement('a');
+        document.body.appendChild(a);
+        a.setAttribute('style', 'display: none');
+        a.href = url;
+        a.download = response['filename'];
+        a.click();
+        window.URL.revokeObjectURL(url);
+        a.remove(); */
+
     }
 
     // post edited config to database
