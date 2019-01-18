@@ -185,60 +185,12 @@ export class CommunicationService {
 
     // save a .STATE file to the local directory
     async saveConfiguration(current): Promise<any>{
-
-        //let response = await this.httpClient.post(
-        //    this.apiURL+'saveConfiguration'
-        //            +'&instrument='+current.name
-        //            +'&id='+current.info.id,
-        //    {}).toPromise();
-        //return (response["statusText"]==="OK");
-
-        //return this.httpClient.post(
-        //    this.apiURL+'saveConfiguration'
-        //            +'&instrument='+current.name
-        //            +'&id='+current.info.id, {
-        //        responseType: ResponseContentType.Blob
-        //    }).pipe(map(res => {
-        //         return {
-        //             filename: res.filename,
-        //             data: res.blob()
-        //         };
-        //     }))
-        //     .subscribe(res => {
-        //         console.log('start download:', res);
-        //         var url = window.URL.createObjectURL(res.data);
-        //         var a = document.createElement('a');
-        //         document.body.appendChild(a);
-        //         a.setAttribute('style', 'display: none');
-        //         a.href = url;
-        //         a.download = 'test.state';
-        //         a.click();
-        //         window.URL.revokeObjectURL(url);
-        //         a.remove();
-        //     }, error => {
-        //         console.log('download error:', JSON.stringify(error));
-        //     }, () => {
-        //         console.log('Completed File Download.')
-        // });
-
         let response = await this.httpClient.post(
             this.apiURL+'saveConfiguration'
                     +'&instrument='+current.name
                     +'&id='+current.info.id, {}).toPromise();
         console.log('response: ', response);
         return response;
-
-        /* console.log('start download:', response);
-        var url = window.URL.createObjectURL(response);
-        var a = document.createElement('a');
-        document.body.appendChild(a);
-        a.setAttribute('style', 'display: none');
-        a.href = url;
-        a.download = response['filename'];
-        a.click();
-        window.URL.revokeObjectURL(url);
-        a.remove(); */
-
     }
 
     // post edited config to database
@@ -248,13 +200,6 @@ export class CommunicationService {
         current.info.progname = current.progname;
         current.info.instrument = current.name;
 
-      // console.log("updating", JSON.parse(JSON.stringify({
-      //       instrument:current.name,
-      //       info:current.info,
-      //       id:current.info.id,
-      //       semester:current.semester
-      //   })));
-        
         var data = '';
         for (let item in current.info){
             //console.log(item, current.info[item]);
@@ -290,7 +235,7 @@ export class CommunicationService {
     // use keckID cookie to get schedule JSON from backend
     async generateAllowedProgramList(keckID): Promise<any>{
 
-        console.log(keckID)
+        //console.log(keckID)
         let response = await this.httpClient.post<any[]>(
             this.apiURL+"getAllowedPrograms"
                 +"&keck_id="+keckID.toString(),
@@ -317,7 +262,7 @@ export class CommunicationService {
     /**
     ** Return a list of instruments for the given program.
     async getInstrumentList(current): Promise<any>{
-        console.log("current: ",current);
+        //console.log("current: ",current);
         let response = await this.httpClient.post<any[]>(
             this.apiURL+"getInstrumentList"
                 +"&keck_id="+current.keckID.toString()

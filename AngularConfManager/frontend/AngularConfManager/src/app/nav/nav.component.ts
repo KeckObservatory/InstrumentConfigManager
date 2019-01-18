@@ -18,8 +18,8 @@ export class NavComponent implements OnInit {
 
     data:any;
 
-    allowedPrograms: Object;
-    allowedInstruments: Object;
+    allowedPrograms: Array<string>;
+    allowedInstruments: Array<string>;
     allowedSemesters: Object;
     private keckID: number = 0;
 
@@ -28,7 +28,10 @@ export class NavComponent implements OnInit {
     // default values so the selectors have something to display
     current:any = {"name":"Instrument","progname":"Program","semester":"Semester"};
 
-    opt_show:boolean;show_opt:boolean;inst_name:string;sem_show:boolean;
+    opt_show:boolean;
+    show_opt:boolean;
+    inst_name:string;
+    sem_show:boolean;
 
     // url params (optional)
     url_program:string;
@@ -87,26 +90,26 @@ export class NavComponent implements OnInit {
 
         this.data = this.getData();
 
-
-        //var cookies = this.getCookieList();
-        //this.keckID = this.getCookieList();
         this.keckID = await this.http.getKeckID();
-        console.log(this.keckID);
+        console.log("current id: ", this.keckID);
         this.current['keckID'] = this.keckID;
 
         //let permissions = await this.http.generateAllowedProgramList(cookies["keckID"]);
         let programs = await this.http.generateAllowedProgramList(this.keckID);
+        //console.log("programs: ", programs);
+
 
         if (!programs) {
           // console.log("bad login")
             this.modal.show({
                 "name":"login",
                 "data":""
-            })
+            });
         }
 
         //console.log(programs)
         this.allowedPrograms = programs["allowedPrograms"];
+        console.log("allowed progs", typeof(this.allowedPrograms));
         this.allowedInstruments = programs['allowedInstruments'];
         //console.log('allowed: ',this.allowedInstruments)
 
@@ -115,23 +118,18 @@ export class NavComponent implements OnInit {
 
 
         // query the URL parameters to open a program/config on load
-        this.route.queryParams
-          .subscribe(async params => {
+        await this.route.queryParams
+        .subscribe(async params => {
+            this.inst_name = "Instrument";
+            //console.log("current inst: ", this.inst_name);
 
             if (params){
                 //console.log("params", params);
-                if (params.program) {
+                if (this.allowedPrograms.includes(params.program)) {
                     this.url_program = params.program;
                     this.current.progname = this.url_program;
 
                     await this.swapProgram(this.url_program);
-                }
-
-                if (params.instrument) {
-                    this.url_instrument = params.instrument;
-                    this.current.name = this.url_instrument;
-
-                    await this.swapInstrument(this.url_instrument);
                 }
 
                 if (params.semester) {
@@ -141,8 +139,16 @@ export class NavComponent implements OnInit {
                     await this.swapSemester(this.url_semester);
                 }
 
+                if (params.instrument) {
+                    this.url_instrument = params.instrument;
+                    this.current.name = this.url_instrument;
+                    this.inst_name = params.instrument;
+
+                    await this.swapInstrument(this.url_instrument);
+                }
+
                 if (params.id) {
-                    if (params.instrument && params.program){
+                    if (params.instrument && this.allowedPrograms.includes(params.program)){
                         await this.modal.show({
                             "name":"add",
                             "data":{
@@ -152,6 +158,15 @@ export class NavComponent implements OnInit {
                             }
                         });
                     }
+                } else if (params.instrument && this.allowedPrograms.includes(params.program)) {
+                    this.inst_name = params.instrument;
+                    await this.modal.show({
+                        "name":"add",
+                        "data":{
+                            "current":this.current,
+                            "showAdd":true,
+                        }
+                    });
                 }
 
                 // TODO add support for importing a config from format simulator
@@ -159,7 +174,8 @@ export class NavComponent implements OnInit {
             }
         });
 
-        this.show_opt,this.opt_show=false;this.inst_name="Instrument";
+        this.show_opt,this.opt_show=false;
+        //console.log("instrument: ", this.inst_name);
 
         this.sharedCurrent.set(this.current);
         this.subscription = this.sharedCurrent.currentMessage.subscribe((val) => {
@@ -221,11 +237,8 @@ export class NavComponent implements OnInit {
         let prog: string = this.current["progname"];
         let sem: string = this.current["semester"];
 
-    //if (inst=="HIRESr") inst = "HIRES";
-    //else if (inst=="LRIS-ADC") inst = "LRIS";
         this.current=this.data[inst];
 
-    //console.log(this.current);
 
         if (prog !== "Program") {
             this.current["progname"] = prog;
