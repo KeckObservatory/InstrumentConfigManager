@@ -1,0 +1,6 @@
+{
+    "/api/getAllowedPrograms": {
+        "target": "http://opsbuild:5002",
+        "secure": "false"
+    }
+}

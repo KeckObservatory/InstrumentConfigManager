@@ -1,0 +1,476 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./assets/bootstrap.min.css";
+/* @import "~font-awesome/css/font-awesome.css"; */
+@import "https://fonts.googleapis.com/css?family=Roboto:100,300";
+@import "https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.3.2/css/simple-line-icons.min.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css";
+@font-face {
+    font-family: "ProximaNovaSoftW03-Semibold";
+    src: url("//db.onlinewebfonts.com/t/251c35fe6eeec7ffa3d335357aabcbd0.eot");
+    src: url("//db.onlinewebfonts.com/t/251c35fe6eeec7ffa3d335357aabcbd0.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/251c35fe6eeec7ffa3d335357aabcbd0.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/251c35fe6eeec7ffa3d335357aabcbd0.woff") format("woff"), url("//db.onlinewebfonts.com/t/251c35fe6eeec7ffa3d335357aabcbd0.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/251c35fe6eeec7ffa3d335357aabcbd0.svg#ProximaNovaSoftW03-Semibold") format("svg");
+}
+
+/* Space out content a bit */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* .modal-dialog {
+    height: 95vh !important;
+    padding-top: 200px !important;
+}
+
+.modal-content {
+    height:100% !important;
+}*/
+
+.title-left {
+    float:left;
+}
+.title-right {
+    float:right;
+}
+.title-header {
+    margin-bottom: 4em !important;
+}
+
+.modal-dialog {
+    margin-top:50vh;
+}
+
+.fade {
+    opacity: 1;
+}
+
+.modal-backdrop.fade {
+    opacity: 0.5 !important;
+}
+
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+}
+
+/* Custom page footer */
+.footer {
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+}
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+    padding: 14px 24px;
+    font-size: 21px;
+}
+
+/* Supporting marketing content */
+.marketing {
+    margin: 40px 0;
+}
+.marketing p + h4 {
+    margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
+}
+
+/*
+colors:
+keck-blue=rgba(100,154,202,1);
+keck-light=rgba(189, 207, 227, 1);
+*/
+
+body {
+    padding-top: 20px;
+    background-color: rgba(189, 207, 227, 1);
+    min-width: 880px;
+}
+
+.footer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+.jumbotron .btn {
+    padding: 14px 24px;
+    font-size: 21px;
+}
+
+/* main container box */
+.main {
+    width: 80%;
+}
+
+.config-panel {
+    width: 100%;
+}
+
+nav {
+    height: 1em;
+}
+
+.nav-pills>li>a {
+    border-radius: 0 !important;
+}
+
+.title-header {
+    margin-bottom:1em;
+}
+
+/* Customize the nav-justified links to be fill the entire space of the .navbar */
+
+.nav-justified {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.nav-justified > li > a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 0;
+    font-weight: bold;
+    color: #777;
+    text-align: center;
+    background-color: #e5e5e5; /* Old browsers */
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#e5e5e5));
+    background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #e5e5e5 100%);
+    background-image:      -o-linear-gradient(top, #f5f5f5 0%, #e5e5e5 100%);
+    background-image:         linear-gradient(to bottom, #f5f5f5 0%,#e5e5e5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+    background-repeat: repeat-x; /* Repeat the gradient */
+    border-bottom: 1px solid #d5d5d5;
+}
+.nav-justified > .active > a,
+.nav-justified > .active > a:hover,
+.nav-justified > .active > a:focus {
+    background-color: #ddd;
+    background-image: none;
+    -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.15);
+    box-shadow: inset 0 3px 7px rgba(0,0,0,.15);
+}
+.nav-justified > li:first-child > a {
+    border-radius: 5px 5px 0 0;
+}
+.nav-justified > li:last-child > a {
+    border-bottom: 0;
+    border-radius: 0 0 5px 5px;
+}
+
+@media (min-width: 768px) {
+    .nav-justified {
+        max-height: 52px;
+    }
+    .nav-justified > li > a {
+        border-right: 1px solid #d5d5d5;
+        border-left: 1px solid #fff;
+    }
+    .nav-justified > li:first-child > a {
+        border-left: 0;
+        border-radius: 5px 0 0 5px;
+    }
+    .nav-justified > li:last-child > a {
+        border-right: 0;
+        border-radius: 0 5px 5px 0;
+    }
+}
+
+/* for the "selected program" box to be on the left */
+.program-notify {
+    float:left;
+}
+
+#state-label {
+    margin-bottom: inherit;
+    font-weight: inherit;
+    cursor: pointer;
+}
+input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+.table-controls {
+    position: relative;
+    float: right;
+    width:auto;
+    background-color:#e9e9e9;
+    margin-top: 5.6em;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid black;
+}
+
+/* bootstrap overrides */
+.table, .table-striped>thead{
+    background-color:#e9e9e9 !important;
+}
+.table-striped>tbody>tr:nth-of-type(even){
+    background-color:#e9e9e9 !important;
+}
+.table-striped>tbody>tr:nth-of-type(odd){
+    background-color:#f3f3f3 !important;
+}
+.glyphicon {
+    position: static;
+}
+.panel-primary {
+    background-color:#e9e9e9;
+}
+.panel {
+    border: 0 !important;
+    margin-bottom: 0 !important;
+}
+.bs-example {
+    border: 1px solid !important;
+    text-overflow:clip;
+}
+.table-controls table {
+    margin-bottom: 0 !important;
+}
+pre, .btn, .table, .panel, .panel-heading{
+    border-radius: 0 !important;
+}
+.table > thead > tr > th {
+    white-space: nowrap;
+}
+
+
+li .active {
+    overflow: hidden;
+    height: 100%;
+}
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    /* Remove the padding we set earlier */
+    .masthead,
+    .marketing,
+    .footer {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+.confTable span {
+    cursor: pointer;
+}
+
+.deleteButton {
+    color:#e43309;
+}
+
+.saveButton {
+    color:#3c763d;
+}
+
+body {
+    width: 100%;
+    /* min-height: 500px;
+    margin: 3em auto; */
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f7cac9+0,92a8d1+100 */
+    /* background: #f7cac9; */
+    /* Old browsers */
+    /* background: -moz-linear-gradient(-45deg, #f7cac9 0%, #92a8d1 100%); */
+    /* FF3.6-15 */
+    /* background: -webkit-linear-gradient(-45deg, #f7cac9 0%, #92a8d1 100%); */
+    /* Chrome10-25,Safari5.1-6 */
+    /* background: linear-gradient(135deg, #f7cac9 0%, #92a8d1 100%); */
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /* IE6-9 fallback on horizontal gradient */
+    font-family: 'Roboto', sans-serif;
+    /* letter-spacing: 1px; */
+}
+
+/* h1 {
+text-align: center;
+color: #fff;
+font-weight: 300;
+font-size: 50px;
+font-family: ProximaNovaSoftW03-Semibold;
+letter-spacing: 0px;
+text-shadow: 1px 1px rgba(0, 0, 0, 0.02), 2px 2px rgba(0, 0, 0, 0.02), 3px 3px rgba(0, 0, 0, 0.02), 4px 4px rgba(0, 0, 0, 0.02), 5px 5px rgba(0, 0, 0, 0.02), 6px 6px rgba(0, 0, 0, 0.02), 7px 7px rgba(0, 0, 0, 0.02);
+}
+h1 i {
+position: relative;
+font-size: 70px;
+}
+
+p {
+text-align: center;
+color: #fff;
+font-size: 14px;
+margin-bottom: 2em;
+line-height: 30px;
+}
+p img {
+position: relative;
+top: 8px;
+right: 10px;
+} */
+
+
+.aoyue-select {
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 120px;
+    height: 40px;
+    border-bottom: 0px;
+    border-radius: 3px;
+    font-size: 12px;
+    box-shadow: 0px 1em 2em -1.5em rgba(0, 0, 0, 0.5);
+}
+
+.hidden-options {
+    position: absolute;
+    width:100%;
+}
+
+.aoyue-select > i.toggle {
+    position: absolute;
+    z-index: 4;
+    right: 1.5em;
+    top: 1.2em;
+    color: black;
+}
+.aoyue-select .title,
+.aoyue-select .placeholder {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 1em 2em;
+    background: white;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+.aoyue-select > input {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.aoyue-select > span.placeholder {
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    width: 100%;
+    color: black;
+    border-top: 0px;
+}
+
+.aoyue-select label.option {
+    display: block;
+    overflow: hidden;
+    z-index: 1;
+    width: 100%;
+    transition: all 1s ease-out;
+    margin-bottom: 0px !important;
+}
+.aoyue-select label.option span.title {
+    position: relative;
+    z-index: 4;
+    transition: background .3s ease-out;
+}
+.aoyue-select label.option span.title i.icon {
+    padding-right: 8px;
+    color: #92a8d1;
+}
+.aoyue-select label.option span.title:hover {
+    /* color: #fff; */
+    background: rgba(85, 85, 85, 1);
+    color:white;
+    box-shadow: inset 0px 1px 0px rgba(0, 0, 0, 0.1);
+}
+.aoyue-select label.option input {
+    display: none;
+}
+.aoyue-select label.option input:checked ~ span.title {
+    /* position: absolute; */
+    display: none;
+    /* z-index: 3;
+    top: 0px;
+    font-size: 12px;
+    background: #fff;
+    border-top: 0px;
+    box-shadow: none;
+    color: inherit;
+    width: 100%; */
+}
+.aoyue-select label.option input:disabled ~ span.title {
+    background: #f9f9f9 !important;
+    color: black;
+}
+.aoyue-select label.option input:disabled ~ span.title:hover {
+    color: black;
+    background: none;
+    cursor: no-drop;
+}

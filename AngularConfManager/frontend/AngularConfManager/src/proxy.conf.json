@@ -1,0 +1,8 @@
+{
+	"/getAllowedPrograms": {
+		"target": "https://www:5002",
+		"changeOrigin": true,
+		"secure": false,
+		"logLevel": "debug"
+	}
+}
